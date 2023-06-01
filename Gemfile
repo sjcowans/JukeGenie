@@ -50,6 +50,8 @@ gem "bootsnap", require: false
 
 gem "pg"
 
+gem "rubocop"
+
 gem "bundler-audit"
 
 group :development, :test do
@@ -59,6 +61,7 @@ end
 
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
+  gem "brakeman"
   gem "web-console"
 
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
