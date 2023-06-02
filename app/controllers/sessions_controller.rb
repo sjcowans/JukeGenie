@@ -1,7 +1,9 @@
 class SessionsController < ApplicationController
   def create
+    user_data = request.env['omniauth.auth']
+  
+  
     require 'pry'; binding.pry
-    # render text: request.env["omniauth.auth"].inspect
-
+    redirect_to dashboard_path
   end
 end
