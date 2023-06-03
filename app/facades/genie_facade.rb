@@ -1,0 +1,3 @@
+class GenieFacade
+  
+end

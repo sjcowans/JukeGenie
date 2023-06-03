@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  get '/', to: 'welcome#index'
 
-  # Defines the root path route ("/")
-  # root "articles#index"
+  get 'auth/spotify/callback', to: 'sessions#create'
+  get '/dashboard', to: 'user#show'
 end
