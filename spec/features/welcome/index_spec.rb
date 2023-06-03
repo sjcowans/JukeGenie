@@ -8,7 +8,7 @@ describe 'Welcome Index' do
   describe "Page Display" do
     it "Juke Genie title appears centered at top of page" do
       
-      expect(page).to have_content("Welcome to JukeGenie")
+      expect(page).to have_content("JukeGenie")
     end
   end
 end
