@@ -1,4 +1,4 @@
-require 'rails helper'
+require 'rails_helper'
 
 RSpec.describe 'User show Page', type: :feature do
   before(:each) do

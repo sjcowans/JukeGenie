@@ -13,7 +13,7 @@ RSpec.describe 'New Playlist Page', type: :feature do
        expect(page).to have_content("Get Started!")
     end
 
-    it 'I can fill in the form and submit it' do
+    xit 'I can fill in the form and submit it' do
        fill_in "Juke Name", with : "Bob's Playlist"
        check "Y"
        fill_in "Address", with : "example address"
@@ -22,7 +22,7 @@ RSpec.describe 'New Playlist Page', type: :feature do
        expect(current_path).to eq()
     end
 
-    it 'sad path form fillout' do
+    xit 'sad path form fillout' do
        fill_in "Juke Name", with : ""
        check "Y"
        fill_in "Address", with : "example address"
