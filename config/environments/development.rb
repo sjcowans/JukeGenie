@@ -82,4 +82,5 @@ Rails.application.configure do
     password: 'jvwoeajdpvppyigy',
     authentication: 'plain'
     }
+
 end
