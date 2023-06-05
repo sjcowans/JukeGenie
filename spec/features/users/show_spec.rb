@@ -2,9 +2,10 @@ require 'rails helper'
 
 RSpec.describe 'User show Page', type: :feature do
   before(:each) do
-    @user = User.create!()
+    user = User.create!()
     visit '/dashboard'
   end
+
   describe "when I visit a user's show page" do
     it 'I see a header that has the users name' do
       expect(page).to have_content("#{user.name} Juke Page")
@@ -27,6 +28,10 @@ RSpec.describe 'User show Page', type: :feature do
         expect(page).to have_content("Invited:")
         expect(page).to have_link()
       end
+    end
+
+    xit 'user cannot go to the dashboard without being logged in' do
+      
     end
   end
 end
