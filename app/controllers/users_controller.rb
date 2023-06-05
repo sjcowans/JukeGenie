@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   def show
+    @user = User.find(params[:id])
   end
 
   def create
@@ -18,15 +19,15 @@ class UsersController < ApplicationController
   end
 
   def confirm_email
-    user = User.find_by_confirm_token(params[:id])
-    if user
-      user.email_activate
+    @user = User.find_by_confirm_token(params[:confirmation_token])
+    if @user
+      @user.email_activate
       flash[:success] = "Welcome to the Sample App! Your email has been confirmed.
       Please sign in to continue."
-      redirect_to signin_url
+      redirect_to user_path(@user)
     else
       flash[:error] = "Sorry. User does not exist"
-      redirect_to root_url
+      redirect_to '/'
     end
   end
 

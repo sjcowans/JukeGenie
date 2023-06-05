@@ -8,8 +8,8 @@ class SessionsController < ApplicationController
     user.email = user_data.info[:email]
     user.spotify_id = user_data.uid
     user.save
-    if user.email_confirmed == 0
-      redirect_to dashboard_path
+    if user.confirmed?
+      redirect_to user_path(user)
     else
       user.send_confirmation_email
       redirect_to '/'

@@ -15,7 +15,11 @@ class User < ApplicationRecord
 
   def send_confirmation_email
     confirmation_token = generate_confirmation_token
-    UserMailer.confirmation_email(self, confirmation_token).deliver_now
+    if self.confirm_token 
+      UserMailer.confirmation_email(self, self.confirm_token).deliver_now
+    else
+      UserMailer.confirmation_email(self, confirmation_token).deliver_now
+    end
   end
 
   def generate_confirmation_token
