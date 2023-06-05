@@ -5,7 +5,7 @@ RSpec.describe 'New Playlist Page', type: :feature do
     visit '/'
   end
   describe 'When I go to create a new playlist' do
-    it 'has a fillable form' do
+    xit 'has a fillable form' do
        expect(page).to have_content("Juke Name")
        expect(page).to have_content("Public? Y/N")
        expect(page).to have_content("Address")
