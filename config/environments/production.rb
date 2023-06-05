@@ -90,4 +90,12 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+  config.action_mailer.smtp_settings = {
+    address: 'smtp.zoho.com',
+    port: 465,
+    user_name: 'jukegenieteam@zoho.com',
+    password: 'szMbPq612TZc',
+    authentication: 'plain',
+    enable_starttls_auto: true
+  }
 end

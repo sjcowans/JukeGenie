@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  CONFIRMATION_TOKEN_EXPIRATION = 10.minutes
+  MAILER_FROM_EMAIL = 'no-reply@example.com'
   has_many :suggestions
   has_many :user_playlists
   has_many :playlists, through: :user_playlists
@@ -10,6 +12,15 @@ class User < ApplicationRecord
     self.email_confirmed = 1
     self.confirm_token = nil
     save!(:validate => false)
+  end
+
+  def send_confirmation_email
+    confirmation_token = generate_confirmation_token
+    UserMailer.confirmation_email(self, confirmation_token).deliver_now
+  end
+
+  def generate_confirmation_token
+    signed_id expires_in: CONFIRMATION_TOKEN_EXPIRATION, purpose: :confirm_email
   end
 
   private

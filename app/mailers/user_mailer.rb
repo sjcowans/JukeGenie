@@ -1,8 +1,9 @@
 class UserMailer < ActionMailer::Base
-  default :from => "me@mydomain.com"
+  default from: User::MAILER_FROM_EMAIL
 
-  def registration_confirmation(user)
+  def confirmation_email(user, confirmation_token)
     @user = user
-    mail(:to => "#{user.name} <#{user.email}>", :subject => "Registration Confirmation")
+    @confirmation_token = confirmation_token
+    mail to: user.email, subject: "Registration Confirmation"
   end
 end
