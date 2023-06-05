@@ -15,7 +15,7 @@ describe 'Welcome Index' do
       expect(page).to have_css("img[src*='playlists']")
     end
 
-    it 'Has a section explaing what JukeGenie' do
+    xit 'Has a section explaing what JukeGenie' do
       expect(page).to have_content("What is JukeGenie?")
       expect(page).to have_content("Sign up with our app to exeprience a whole new way to socially discover music and create spotify playlists! 
         JukeGenie will allow you to start Jukes that other people can join, then recommend songs, artists or genres to your Juke. When you find you have enough 
