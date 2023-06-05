@@ -3,13 +3,12 @@
 <div class="absolute right-10 top-0 px-5 p-8 bg-emerald-600">
   <%= link_to "Log In", "/auth/spotify", method: :post, class: "relative text-2xl font-bold rounded r-lg text-white bg-emerald-600 hover:bg-emerald-500 focus:bg-emerald-700" %>
 </div>
-
-<div class= "grid grid-rows-2 grid-flow-col gap-1">
-  <div class= "absolute top-24 left-0 w-full h-full">  
-    <%= image_tag("playlists/playlist.png") %>
+  
+  <div class= "absolute top-24 left-0 w-full h-full object-fill w-1/2">  
+    <%= image_tag("playlists/playlist.png", style: 'height:100%;width:auto;') %>
   </div>
   
-  <div class= "absolute top-24 right-5">  
+  <div class= "absolute top-24 right-0 object-fill w-1/2">  
     <div class="max-w-md overflow-hidden rounded-lg shadow-lg">
       <div class="px-6 py-4">
         <h4 class="mb-3 text-xl font-semibold tracking-tight text-gray-800">What is JukeGenie?</h4>
@@ -17,4 +16,3 @@
       </div>
     </div> 
   </div>
-</div>
