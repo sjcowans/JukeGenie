@@ -1,12 +1,13 @@
 class User < ApplicationRecord
   CONFIRMATION_TOKEN_EXPIRATION = 10.minutes
-  MAILER_FROM_EMAIL = 'no-reply@example.com'
   has_many :suggestions
   has_many :user_playlists
   has_many :playlists, through: :user_playlists
   before_create :confirmation_token
 
   enum email_confirmed: { uncomfirmed: 0, confirmed: 1 }
+  MAILER_FROM_EMAIL = 'no-reply@example.com'
+
 
   def email_activate
     self.email_confirmed = 1
