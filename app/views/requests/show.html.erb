@@ -1,28 +1,24 @@
 <div class="flex flex-col mt-10 relative left-0 top-24 px-4 p-3 bg-emerald-600">
-  <div class="relative text-1xl font-bold rounded r-lg text-white bg-emerald-600 hover:bg-emerald-500 focus:bg-emerald-700">
-
-<h1>Requests:</h1><br>
-<%= form_with url: "/requests", method: :post, local: true do |f| %>
-  <%= f.label :name %>
-    <div class="text-black">
-  <%= f.text_field :name %>
+  <div class="relative text-1xl font-bold rounded r-lg text-black bg-emerald-600 focus:bg-emerald-700">
+    <div class="text-white">
+      <h1>Requests:</h1><br>
+    </div>
+    <%= form_with url: "/requests", method: :post, local: true do |f| %>
+      <div class="text-white">
+        <%= f.label :name %>
+      </div>
+      <%= f.text_field :name %>
+      <div class="text-white">
+        <%= f.label :address %>
+      </div>
+      <%= f.text_field :address %>
+      <div class="text-white">
+        <%= f.label :range %> (in miles)
+      </div>
+      <%= f.number_field :range %>
+      <div class="text-white hover:bg-emerald-500">
+        <br> <%= f.submit 'Create Juke!'%>
+      </div>
+    <% end %>
   </div>
-
-  <%= f.label :address %>
-      <div class="text-black">
-
-  <%= f.text_field :address %>
-    </div>
-
-
-  <%= f.label :range %> (in miles)
-      <div class="text-black">
-
-  <%= f.number_field :range %>
-    </div>
-
-
-  <%= f.submit 'Create Juke!'%>
-<% end %>
-</div>
 </div>
