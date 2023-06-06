@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get 'auth/spotify/callback', to: 'sessions#create'
   get '/dashboard', to: 'users#show'
   get '/users/:id/requests', to: 'requests#show'
+  get '/users/:id/playlists', to: 'playlists#show'
   patch '/dashboard', to: 'users#update'
   resources :confirmations, only: %i[create edit], param: :confirmation_token
 end
