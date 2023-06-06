@@ -1,9 +1,12 @@
 
-<div class="flex flex-col mt-4 absolute left-0 top-24 px-4 p-3 bg-emerald-600">
-  <div><%= link_to "New Juke!", "tbd", method: :post, class: "relative text-1xl font-bold rounded text-white bg-emerald-600 hover:bg-emerald-500 focus:bg-emerald-700" %></div>
+<div class="flex flex-col mt-10 relative left-0 top-24 px-4 p-3 bg-emerald-600">
+  <div><%= link_to "New Juke!", "/users/#{@user.id}/requests", method: :get, class: "relative text-1xl font-bold rounded text-white bg-emerald-600 hover:bg-emerald-500 focus:bg-emerald-700" %></div>
   <div><%= link_to "Join a Juke!", "tbd", method: :post, class: "relative text-1xl font-bold rounded r-lg text-white bg-emerald-600 hover:bg-emerald-500 focus:bg-emerald-700" %></div>
   <div><%= link_to "Explore Nearby Jukes!", "tbd", method: :post, class: "relative text-1xl font-bold rounded r-lg text-white bg-emerald-600 hover:bg-emerald-500 focus:bg-emerald-700" %></div>
   <div class="relative text-1xl font-bold rounded r-lg text-white bg-emerald-600 hover:bg-emerald-500 focus:bg-emerald-700">Current Jukes:</div>
+  <div id="hosted" class="relative text-1xl font-bold rounded r-lg text-white bg-emerald-600 hover:bg-emerald-500 focus:bg-emerald-700">Hosted:</div>
+  <div id="invited" class="relative text-1xl font-bold rounded r-lg text-white bg-emerald-600 hover:bg-emerald-500 focus:bg-emerald-700">Invited:</div>
+  <div class="relative text-1xl font-bold rounded r-lg text-white bg-emerald-600 hover:bg-emerald-500 focus:bg-emerald-700"><%= button_to 'Enable 2 Factor Authentication', '/dashboard', method: :patch, params: { two_factor: 1, user: @user.id } %></div>
 </div>
 
 

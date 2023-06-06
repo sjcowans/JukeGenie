@@ -1,6 +1,10 @@
 class UsersController < ApplicationController
   def show
-    @user = User.find(params[:id])
+    @user = User.find_by_spotify_id(session[:user_id])
+    if @user.nil?
+      redirect_to_to '/'
+      flash[:alert] = "You need to sign in, yo!"
+    end
   end
 
   def create
@@ -8,7 +12,7 @@ class UsersController < ApplicationController
     if @user.save
       @user.send_confirmation_email
       flash[:success] = "Please confirm your email address to continue"
-      redirect_to user_path(@user)
+      redirect_to '/dahsboard'
     else
       flash[:error] = "Ooooppss, something went wrong!"
       render 'new'
@@ -24,11 +28,23 @@ class UsersController < ApplicationController
       @user.email_activate
       flash[:success] = "Welcome to the Sample App! Your email has been confirmed.
       Please sign in to continue."
-      redirect_to user_path(@user)
+      redirect_to 'dashboard'
     else
       flash[:error] = "Sorry. User does not exist"
       redirect_to '/'
     end
+  end
+
+  def update
+    @user = User.find_by(params[:user])
+    if params[:two_factor]
+      @user.add_two_factor
+      redirect_to 'dashboard'
+      flash[:success] = "User updated!"
+    end
+  end
+
+  def requests
   end
 
   private 

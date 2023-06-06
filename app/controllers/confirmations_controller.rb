@@ -6,7 +6,7 @@ class ConfirmationsController < ApplicationController
       @user.email_activate
       flash[:success] = "Welcome to the Sample App! Your email has been confirmed.
       Please sign in to continue."
-      redirect_to user_path(@user)
+      redirect_to '/dashboard'
     else
       flash[:error] = "Sorry. User does not exist"
       redirect_to '/'
