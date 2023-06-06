@@ -4,6 +4,7 @@ class User < ApplicationRecord
   before_create :confirmation_token
 
   enum email_confirmed: { uncomfirmed: 0, confirmed: 1 }
+  enum two_factor: { false: 0, true: 1, two_factor_confirm: 2, two_factor_uncomfirmed: 3 }
   MAILER_FROM_EMAIL = 'no-reply@example.com'
 
 
@@ -24,6 +25,11 @@ class User < ApplicationRecord
 
   def generate_confirmation_token
     signed_id expires_in: CONFIRMATION_TOKEN_EXPIRATION, purpose: :confirm_email
+  end
+
+  def add_two_factor
+    self.two_factor = 1
+    save
   end
 
   private
