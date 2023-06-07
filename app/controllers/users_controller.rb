@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find_by_spotify_id(session[:user_id])
     if @user.nil?
-      redirect_to_to '/'
+      redirect_to '/'
       flash[:alert] = "You need to sign in, yo!"
     end
   end
