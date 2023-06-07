@@ -8,6 +8,9 @@ Rails.application.routes.draw do
   get '/users/:id/explorejukes', to: 'explorejukes#show'
   get '/users/:id/jukes', to: 'jukes#index'
   patch '/dashboard', to: 'users#update'
+  patch '/sessions', to: 'sessions#update'
   get "/users/:id/playlists/suggestions", to: 'playlist_suggestions#index'
+  get '/confirmations/:id', to: 'confirmations#show'
+  patch '/users/confirm', to: 'users#confirm_email'
   resources :confirmations, only: %i[create edit], param: :confirmation_token
 end

@@ -1,18 +1,20 @@
 
 <div class="flex flex-col mt-10 relative left-0 top-24 px-4 p-3 bg-emerald-600">
-  <center><div class="relative text-1xl font-bold rounded r-lg text-white bg-emerald-600 hover:bg-emerald-500 focus:bg-emerald-700"><%= button_to 'Enable 2 Factor Authentication', '/dashboard', method: :patch, params: { two_factor: 1, user: @user.id } %></div></center>  
+  <center><div class="relative text-1xl font-bold rounded r-lg text-white bg-emerald-600 hover:bg-emerald-500 focus:bg-emerald-700"><%= button_to 'Enable 2 Factor Authentication', '/dashboard', method: :patch, params: { two_factor: 1, user: @user.id } %></div></center> 
+  <center><div class="relative text-1xl font-bold rounded r-lg text-white bg-emerald-600 hover:bg-emerald-500 focus:bg-emerald-700"><%= button_to 'Disable 2 Factor Authentication', '/dashboard', method: :patch, params: { no_two_factor: 1, user: @user.id } %></div></center>   
   <div><%= link_to "New Juke!", "/users/#{@user.id}/requests", method: :get, class: "relative text-1xl font-bold rounded text-white bg-emerald-600 hover:bg-emerald-500 focus:bg-emerald-700" %></div>
   <div><%= link_to "Join a Juke!", "tbd", method: :post, class: "relative text-1xl font-bold rounded r-lg text-white bg-emerald-600 hover:bg-emerald-500 focus:bg-emerald-700" %></div>
   <div><%= link_to "Explore Nearby Jukes!", "/users/#{@user.id}/explorejukes", method: :get, class: "relative text-1xl font-bold rounded r-lg text-white bg-emerald-600 hover:bg-emerald-500 focus:bg-emerald-700" %></div>
   <center><div class="relative text-1xl font-bold rounded r-lg text-white bg-emerald-600 hover:bg-emerald-500 focus:bg-emerald-700">Current Jukes:</div></center>
   <div id="hosted" class="relative text-1xl font-bold rounded r-lg text-white bg-emerald-600 hover:bg-emerald-500 focus:bg-emerald-700">Hosted:</div>
-  <div id="invited" class="relative text-1xl font-bold rounded r-lg text-white bg-emerald-600 hover:bg-emerald-500 focus:bg-emerald-700">Invited:</div>
+  <div id="Joined" class="relative text-1xl font-bold rounded r-lg text-white bg-emerald-600 hover:bg-emerald-500 focus:bg-emerald-700">Invited:</div>
 </div>
 
 
 <div class="absolute right-10 top-0 px-5 p-8 bg-emerald-600">
-  <div class="relative text-2xl font-bold rounded r-lg text-white bg-emerald-600 hover:bg-emerald-500 focus:bg-emerald-700">
+  <div class="relative text-2xl font-bold rounded r-lg text-white bg-emerald-600 focus:bg-emerald-700">
    <%=@user.username %>'s Juke Page<div>
+    <center><div class="relative text-1xl font-bold rounded r-lg text-white bg-emerald-600 hover:bg-emerald-500 focus:bg-emerald-700"><%= button_to 'Logout', '/sessions', method: :patch, params: { logout: true} %></div></center>   
 </div>
 
 
