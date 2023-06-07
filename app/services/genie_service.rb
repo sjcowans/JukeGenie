@@ -30,4 +30,8 @@ class GenieService
       req.params = { "lat" => @data["lat"], "lng" => @data["lng"] }
     end
   end
+
+  def find_playlist
+    conn.get("api/v1/playlists/#{@data}")
+  end
 end
