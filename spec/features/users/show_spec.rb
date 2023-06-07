@@ -23,8 +23,8 @@ RSpec.describe 'User show Page', type: :feature do
         expect(page).to have_content("Hosted:")
       end
 
-      within '#invited' do
-        expect(page).to have_content("Invited:")
+      within '#joined' do
+        expect(page).to have_content("Joined:")
       end
     end
 

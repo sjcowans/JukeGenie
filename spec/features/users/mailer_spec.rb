@@ -8,13 +8,13 @@ RSpec.describe UserMailer, type: :mailer do
     end
 
     it 'renders the headers' do
-      expect(@mail.subject).to eq('Registration Confirmation')
+      expect(@mail.subject).to eq('Confirmation')
       expect(@mail.to).to eq(['test@email.com'])
       expect(@mail.from).to eq(['no-reply@example.com'])
     end
 
     it 'renders the body' do
-      expect(@mail.body.encoded).to eq("<h1>Confirmation Instructions</h1>\r\n<a href=\"http://localhost:3000/confirmations/12345/edit\">Click here to confirm your email.</a>")
+      expect(@mail.body.encoded).to eq("<h1>Confirmation Instructions</h1>\r\nYour code is: 12345\r\n\r\nOR\r\n\r\n<a href=\"http://localhost:3000/confirmations/12345/edit\">Click here to confirm your email.</a>")
     end
   end
 end
