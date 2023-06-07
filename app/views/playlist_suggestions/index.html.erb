@@ -1,0 +1,28 @@
+<center>
+  <div class="flex flex-col mt-10 relative left-0 top-24 px-4 p-3 bg-emerald-600">
+    <div class="relative text-1xl font-bold rounded r-lg text-black bg-emerald-600 focus:bg-emerald-700">
+      <%= form_with url: "/requests", method: :post, local: true do |f| %>
+        <div class="text-white">
+          <h1>Genres:</h1><br>
+        </div>
+        <div class="scroll">
+          <% @genres.each do |genre| %>
+            <%= f.label genre %>
+            <%= f.check_box genre %> <br>
+          <% end %>
+        </div>
+        <div class="text-white">
+          <br><%= f.label :artists %> (seperate artists using commans!)
+        </div>
+          <%= f.text_field :artists %>
+        <div class="text-white">
+         <br><%= f.label :songs %> (seperate songs using commas!)
+        </div>
+          <%= f.text_field :songs %>
+        <div class="text-white hover:bg-emerald-500">
+          <br><%= f.submit 'Add Suggestions!'%>
+        </div>
+      <%end%>
+    </div>
+  </div>
+</center>
