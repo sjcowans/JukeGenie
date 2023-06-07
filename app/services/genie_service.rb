@@ -23,4 +23,11 @@ class GenieService
       req.params = {user: JSON.parse(@data.to_json)}
     end
   end
+
+  def playlists
+    conn.get('api/v1/playlists') do |req|
+      req.headers = {"CONTENT_TYPE" => "application/json"}
+      req.params = { "lat" => @data["lat"], "lng" => @data["lng"] }
+    end
+  end
 end
