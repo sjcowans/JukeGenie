@@ -64,6 +64,24 @@ class GenieService
     end
   end
 
+  def create_suggestion(params)
+    response = conn.post do |req|
+      req.url '/api/v1/suggestions'
+      req.headers['Content-Type'] = 'application/json'
+      req.body = params
+    end
+    JSON.parse(response.body, symbolize_names: true)
+  end
+
+  def populate_playlist(params)
+    response = conn.post do |req|
+      req.url "/api/v1/playlists/#{params[:playlist_id]}/populate"
+      req.headers['Content-Type'] = 'application/json'
+      req.params = params
+    end
+    result = JSON.parse(response.body, symbolize_names: true)
+  end
+
   def find_playlist
     conn.get("/api/v1/playlists/#{@data}")
   end

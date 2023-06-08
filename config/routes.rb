@@ -12,6 +12,7 @@ Rails.application.routes.draw do
 
   scope '/dashboard', as: 'dashboard' do
     resources :playlists, only: [:index, :new, :create, :show] do
+      post :populate, on: :member
       resources :suggestions, only: [:index, :show, :create], controller: 'playlist_suggestions'
       get '/suggestion', to: 'playlist_suggestions#suggestion_form'
       post "/suggestion", to: "playlist_suggestions#create_suggestion"
