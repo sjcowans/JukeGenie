@@ -1,6 +1,5 @@
 class GenieService
-
-  def initialize(data)
+  def initialize(data=nil)
     @data = data
   end
 
@@ -16,6 +15,16 @@ class GenieService
   def user
     get_url('/api/v1/users')
   end
+
+  def create_playlist(params)
+    response = conn.post do |req|
+      req.url '/api/v1/playlists'
+      req.headers['Content-Type'] = 'application/json'
+      req.body = params.to_json
+    end
+    JSON.parse(response.body, symbolize_names: true)
+  end
+  
 
   def create_user
     conn.post('/api/v1/users') do |req|

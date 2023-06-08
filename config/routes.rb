@@ -3,6 +3,9 @@ Rails.application.routes.draw do
 
   get 'auth/spotify/callback', to: 'sessions#create'
   get '/dashboard', to: 'users#show'
+  resources :users, only: [] do 
+    resources :playlists, only: [:new, :create, :show]
+  end
   get '/users/:id/requests', to: 'requests#show'
   get '/users/:id/playlists/:id', to: 'playlists#show'
   get '/users/:id/explorejukes', to: 'explorejukes#show'
