@@ -18,5 +18,7 @@ module JukeGenie
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+    RSpotify::authenticate("edfc246cd9c44a8b84ae3a864692f2e5", "c399a27de5354b82a2d9bad4a9ef12b0")
   end
 end
+

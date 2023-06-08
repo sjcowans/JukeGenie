@@ -1,0 +1,20 @@
+<div class="flex flex-col mt-0 relative self-center top-24 px-4 p-3 bg-emerald-600">
+  <div><center><u><%= link_to "Return To Dashboard", dashboard_path, method: :get, class: "relative text-2xl font-bold rounded text-white bg-emerald-600 hover:bg-emerald-500 focus:bg-emerald-700" %></u></center></div><br>
+</div>
+
+<div class="flex flex-col mt-0 relative self-center top-24 px-4 p-3 bg-emerald-600">
+  <div><center><u><%= link_to "Make Suggestions!", dashboard_playlist_suggestions_path(@playlist[:id]) , method: :get, class: "relative text-2xl font-bold rounded text-white bg-emerald-600 hover:bg-emerald-500 focus:bg-emerald-700" %></u></center></div><br>
+   <div class="relative text-2xl font-bold rounded text-white bg-emerald-600 focus:bg-emerald-700"><center>Join Key: <%= @playlist[:attributes][:join_key] %></div>
+</div>
+
+<div class="flex flex-col mt-0 relative self-center top-24 px-4 p-3 bg-emerald-600">
+  <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/<%="#{@playlist[:attributes][:spotify_id]}"%>?utm_source=generator" width="100%" height="715" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe> 
+</div>
+
+<div class="absolute right-10 top-0 px-5 p-8 bg-emerald-600">
+  <div class="relative text-2xl font-bold rounded r-lg text-white bg-emerald-600 hover:bg-emerald-500 focus:bg-emerald-700">
+   <%= @playlist[:attributes][:name] %><br>
+  <div>
+</div>
+
+                                    

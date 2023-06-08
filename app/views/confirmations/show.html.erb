@@ -1,0 +1,30 @@
+  <center>
+
+<div class="flex flex-col mt-10 relative left-0 top-24 px-4 p-3 bg-emerald-600">
+  <div class="relative text-2xl font-bold rounded r-lg text-nlack bg-emerald-600 focus:bg-emerald-700">
+
+<%= form_with url: "/confirmations", method: :update, local: true do |f| %>
+          <div class="text-white">
+            <%= f.label :code %>
+          </div>
+        <%= f.text_field :code %>
+          <div class="text-white hover:bg-emerald-500">
+            <br><%= f.submit 'Sign In!'%>
+          </div>
+      <% end %>
+      </div>
+</div>
+  </center>   
+
+<div class="absolute right-10 top-0 px-5 p-8 bg-emerald-600">
+  <div class="relative text-2xl font-bold rounded r-lg text-white bg-emerald-600 focus:bg-emerald-700">
+    Hello <%=@user.username %>
+  <div>
+  <center>
+  <div class="relative text-1xl font-bold rounded r-lg text-white bg-emerald-600 hover:bg-emerald-500 focus:bg-emerald-700">
+  <%= button_to 'Logout', '/sessions', method: :patch, params: { logout: true} %>
+  </div>
+  </center>   
+</div>
+
+

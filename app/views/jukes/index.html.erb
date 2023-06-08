@@ -1,0 +1,18 @@
+<% if @playlists.nil? %>
+<div class="px-4 py-3 rounded relative top-24">
+    <center><u><div class="relative text-2xl font-bold rounded text-white bg-emerald-600 hover:bg-emerald-500 focus:bg-emerald-700">No playlists found near this location!</u></div></center><br>
+</div>
+<% else %>
+  <% @playlists.each do |playlist| %>
+    <div id=<%=playlist[:id]%>>
+
+  <div class="px-4 py-3 rounded relative top-24">
+      <div><center><u><%= link_to "#{playlist[:attributes][:name]}", "/users/#{playlist[:id]}/playlists/#{playlist[:id]}", method: :get, class: "relative text-2xl font-bold rounded text-white bg-emerald-600 hover:bg-emerald-500 focus:bg-emerald-700" %></u></center></div><br>
+    </div>
+  </div>
+  <% end %>
+<% end %>
+
+<div class="absolute right-10 top-0 px-5 p-8 bg-emerald-600">
+  <div class="relative text-2xl font-bold rounded r-lg text-white bg-emerald-600 hover:bg-emerald-500 focus:bg-emerald-700">Public Jukes Near You<div>
+</div>
