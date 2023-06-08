@@ -1,7 +1,7 @@
 <center>
   <div class="flex flex-col mt-10 relative left-0 top-24 px-4 p-3 bg-emerald-600">
     <div class="relative text-1xl font-bold rounded r-lg text-black bg-emerald-600 focus:bg-emerald-700">
-      <%= form_with url: "/playlists", method: :post, local: true do |f| %>
+      <%= form_with url: dashboard_playlists_path, method: :post, local: true do |f| %>
         <div class="text-white">
           <%= f.label :name %>
         </div>
