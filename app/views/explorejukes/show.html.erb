@@ -1,7 +1,7 @@
 
 <div class="flex flex-col mt-0 relative left-0 top-24 px-4 p-3 bg-emerald-600">
   <div class="relative text-1xl font-bold rounded r-lg text-white bg-emerald-600 hover:bg-emerald-500 focus:bg-emerald-700"></div></center>  
-  <center><div><%= link_to "Use Current Location", "/users/:id/jukes", method: :get, class: "relative text-1xl font-bold rounded text-white bg-emerald-600 hover:bg-emerald-500 focus:bg-emerald-700" %></div><center>
+  <center><div><%= link_to "Use Current Location", dashboard_playlists_path, method: :get, class: "relative text-1xl font-bold rounded text-white bg-emerald-600 hover:bg-emerald-500 focus:bg-emerald-700" %></div><center>
 </div>
 
 <center><div class="flex flex-col mt-0 relative left-0 top-24 px-4 p-3 bg-emerald-600">
@@ -9,7 +9,7 @@
     <div class="text-white">
       Desired Location Of Search:
     </div> <br>
-    <%= form_with url: "/users/:id/jukes", method: :get, local: true do |f| %>
+    <%= form_with url: dashboard_playlists_path, method: :get, local: true do |f| %>
       <div class="text-white">
         <%= f.label :address %>
       </div>

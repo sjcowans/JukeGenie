@@ -4,13 +4,13 @@ class PlaylistsController < ApplicationController
     if params.has_key?("address")
       results = Geocoder.search(params["address"])
       current_location = results.first.data["geometry"]["location"]
-      response = @service.playlists
+      response = GenieService.new(current_location).playlists
       playlists_response = JSON.parse(response.body, symbolize_names: true)
       @playlists = playlists_response[:data]
     else
       results = request.location
       current_location = results.first.data["geometry"]["location"]
-      response = @service.playlists
+      response = GenieService.new(current_location).playlists
       playlists_response = JSON.parse(response.body, symbolize_names: true)
       @playlists = playlists_response[:data]
     end
@@ -22,9 +22,16 @@ class PlaylistsController < ApplicationController
   
   def create
     service = GenieService.new
-    response = service.create_playlist(params)
-    playlist_id = response[:data][:id]
-    redirect_to dashboard_playlist_suggestions_path(playlist_id)
+    if params[:join_code] == nil
+      response = service.create_playlist(params)
+      formatted_response = JSON.parse(response.body, symbolize_names: true)
+      playlist_id = formatted_response[:data][:id]
+      redirect_to dashboard_playlist_path(playlist_id)
+    else
+      response = service.create_user_playlist(params)
+      playlist_id = response[:data][:id]
+      redirect_to dashboard_playlist_path(playlist_id)
+    end
   end
   
   def show
@@ -33,6 +40,7 @@ class PlaylistsController < ApplicationController
     formatted_response = JSON.parse(response.body, symbolize_names: true)
     @playlist = formatted_response[:data]
   end
+
 
   def populate
     service = GenieService.new(suggestions_params[:playlist_id])
@@ -72,6 +80,10 @@ class PlaylistsController < ApplicationController
     
     result = service.populate_playlist(populate_params)
     redirect_to dashboard_playlist_path(suggestions_params[:playlist_id])
+  end
+  
+  def search
+    @user = User.find(params[:id])
   end
 
   private

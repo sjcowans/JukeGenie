@@ -4,11 +4,18 @@
   <center><div class="relative text-1xl font-bold rounded r-lg text-white bg-emerald-600 hover:bg-emerald-500 focus:bg-emerald-700"><%= button_to 'Disable 2 Factor Authentication', '/dashboard', method: :patch, params: { no_two_factor: 1, user: @user.id } %></div></center>   
 
   <div><%= link_to "New Juke!", new_dashboard_playlist_path, method: :get, class: "relative text-1xl font-bold rounded text-white bg-emerald-600 hover:bg-emerald-500 focus:bg-emerald-700" %></div>
-  <div><%= link_to "Join a Juke!", "tbd", method: :post, class: "relative text-1xl font-bold rounded r-lg text-white bg-emerald-600 hover:bg-emerald-500 focus:bg-emerald-700" %></div>
-  <div><%= link_to "Explore Nearby Jukes!", "/users/#{@user.id}/explorejukes", method: :get, class: "relative text-1xl font-bold rounded r-lg text-white bg-emerald-600 hover:bg-emerald-500 focus:bg-emerald-700" %></div>
+  <div><%= link_to "Join a Juke!", "/users/#{@user.id}/search", method: :get, class: "relative text-1xl font-bold rounded r-lg text-white bg-emerald-600 hover:bg-emerald-500 focus:bg-emerald-700" %></div>
+   <div><%= link_to "Explore Nearby Jukes!", "/dashboard/explorejukes", method: :get, class: "relative text-1xl font-bold rounded r-lg text-white bg-emerald-600 hover:bg-emerald-500 focus:bg-emerald-700" %></div>
+
   <center><div class="relative text-1xl font-bold rounded r-lg text-white bg-emerald-600 hover:bg-emerald-500 focus:bg-emerald-700">Current Jukes:</div></center>
   <div id="hosted" class="relative text-1xl font-bold rounded r-lg text-white bg-emerald-600 hover:bg-emerald-500 focus:bg-emerald-700">Hosted:</div>
+  <% @hosted_playlists.each do |playlist| %>
+   <center><div> <%= link_to "#{playlist[:name]}", dashboard_playlist_path(playlist[:id]), method: :get, class: "relative text-1xl font-bold rounded r-lg text-white bg-emerald-600 hover:bg-emerald-500 focus:bg-emerald-700"%></div> </center>
+  <%end%>
   <div id="joined" class="relative text-1xl font-bold rounded r-lg text-white bg-emerald-600 hover:bg-emerald-500 focus:bg-emerald-700">Joined:</div>
+    <% @joined_playlists.each do |playlist| %>
+   <center><div> <%= link_to "#{playlist[:name]}", dashboard_playlist_path(playlist[:id]), method: :get, class: "relative text-1xl font-bold rounded r-lg text-white bg-emerald-600 hover:bg-emerald-500 focus:bg-emerald-700"%></div> </center>
+  <%end%>
 </div>
 
 
