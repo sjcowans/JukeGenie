@@ -1,0 +1,21 @@
+<div class="flex flex-col mt-10 relative left-0 top-24 px-4 p-3 bg-emerald-600">
+  <div class="relative text-1xl font-bold rounded r-lg text-black bg-emerald-600 focus:bg-emerald-700">
+      <%= form_with url: users_path, method: :post, local: true do |f| %>
+        <div class="text-white">
+          <br><%= f.label :username %> 
+        </div>
+          <%= f.text_field :username %>
+        <div class="text-white">
+         <br><%= f.label :email %> (seperate songs using commas!)
+        </div>
+          <%= f.text_field :email %>
+            <div class="text-white">
+         <br><%= f.label :password %> 
+        </div>
+          <%= f.text_field :password %>
+        <div class="text-white hover:bg-emerald-500">
+          <br><%= f.submit 'Create!'%>
+        </div>
+      <%end%>
+    </div>
+</div>

@@ -3,13 +3,13 @@ require 'rails_helper'
 RSpec.describe UserMailer, type: :mailer do
   describe 'confirmation' do
     before(:each) do
-      @user = User.create!(email: 'test@email.com')
+      @user = User.create!(username: "balogna", email: "bologna@hotmail.com", email_confirmed: 1)
       @mail = UserMailer.confirmation_email(@user, 12345)
     end
 
     it 'renders the headers' do
       expect(@mail.subject).to eq('Confirmation')
-      expect(@mail.to).to eq(['test@email.com'])
+      expect(@mail.to).to eq(["bologna@hotmail.com"])
       expect(@mail.from).to eq(['no-reply@example.com'])
     end
 
