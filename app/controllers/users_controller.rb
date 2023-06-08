@@ -12,7 +12,7 @@ class UsersController < ApplicationController
     if @user.save
       @user.send_confirmation_email
       flash[:success] = "Please confirm your email address to continue"
-      redirect_to '/dahsboard'
+      redirect_to '/dashboard'
     else
       flash[:error] = "Ooooppss, something went wrong!"
       render 'new'
@@ -26,9 +26,8 @@ class UsersController < ApplicationController
     @user = User.find_by_confirm_token(params[:confirmation_token])
     if @user
       @user.email_activate
-      flash[:success] = "Welcome to the Sample App! Your email has been confirmed.
-      Please sign in to continue."
-      redirect_to 'dashboard'
+      flash.now.alert = "Welcome to Juke Genie!"
+      redirect_to '/dashboard'
     else
       flash[:error] = "Sorry. User does not exist"
       redirect_to '/'
@@ -39,8 +38,14 @@ class UsersController < ApplicationController
     @user = User.find_by(params[:user])
     if params[:two_factor]
       @user.add_two_factor
-      redirect_to 'dashboard'
-      flash[:success] = "User updated!"
+      redirect_to '/dashboard'
+      flash[:success] = "2 Factor Acticated!"
+    elsif params[:no_two_factor]
+      @user.remove_two_factor
+      redirect_to '/dashboard'
+      flash[:success] = "2 Factor Deactivated!"
+    else
+      flash[:alert] = "Error"
     end
   end
 

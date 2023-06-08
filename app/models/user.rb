@@ -1,10 +1,8 @@
 class User < ApplicationRecord
   CONFIRMATION_TOKEN_EXPIRATION = 10.minutes
 
-  before_create :confirmation_token
-
   enum email_confirmed: { uncomfirmed: 0, confirmed: 1 }
-  enum two_factor: { false: 0, true: 1, two_factor_confirm: 2, two_factor_uncomfirmed: 3 }
+  enum two_factor: { false: 0, true: 1 }
   MAILER_FROM_EMAIL = 'no-reply@example.com'
 
 
@@ -15,8 +13,9 @@ class User < ApplicationRecord
   end
 
   def send_confirmation_email
+    self.confirmation_token
     confirmation_token = generate_confirmation_token
-    if self.confirm_token 
+    if self.confirm_token
       UserMailer.confirmation_email(self, self.confirm_token).deliver_now
     else
       UserMailer.confirmation_email(self, confirmation_token).deliver_now
@@ -29,6 +28,12 @@ class User < ApplicationRecord
 
   def add_two_factor
     self.two_factor = 1
+    save
+  end
+
+
+  def remove_two_factor
+    self.two_factor = 0
     save
   end
 
@@ -166,8 +171,7 @@ class User < ApplicationRecord
   private
 
   def confirmation_token
-    if self.confirm_token.blank?
-      self.confirm_token = SecureRandom.urlsafe_base64.to_s
-    end
+    self.confirm_token = SecureRandom.urlsafe_base64(4).to_s
+    self.save
   end
 end

@@ -4,6 +4,6 @@ class UserMailer < ActionMailer::Base
   def confirmation_email(user, confirmation_token)
     @user = user
     @confirmation_token = confirmation_token
-    mail to: user.email, subject: "Registration Confirmation"
+    mail to: user.email, subject: "Confirmation"
   end
 end
