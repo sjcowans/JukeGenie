@@ -7,7 +7,5 @@ class PlaylistSuggestionsController < ApplicationController
     @playlist = formatted_response[:data]
   end
 
-  def create
 
-  end
 end
