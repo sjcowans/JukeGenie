@@ -28,8 +28,12 @@ RSpec.describe 'User show Page', type: :feature do
       end
     end
 
-    xit 'user cannot go to the dashboard without being logged in' do
-      
+    it 'user cannot go to the dashboard without being logged in' do
+      @user.destroy
+      visit '/dashboard'
+
+      expect(current_path).to eq('/')
+      expect(page).to have_content('Woah There! You need to sign in, yo!')
     end
   end
 end

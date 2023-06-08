@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find_by_spotify_id(session[:user_id])
     if @user.nil?
-      redirect_to_to '/'
+      redirect_to '/'
       flash[:alert] = "You need to sign in, yo!"
     end
   end
@@ -15,7 +15,7 @@ class UsersController < ApplicationController
       redirect_to '/dashboard'
     else
       flash[:error] = "Ooooppss, something went wrong!"
-      render 'new'
+      redirect_to new_user_path
     end
   end
 
@@ -48,6 +48,9 @@ class UsersController < ApplicationController
       flash[:alert] = "Error"
     end
   end
+  
+  def new
+  end
 
   def requests
   end
@@ -55,6 +58,6 @@ class UsersController < ApplicationController
   private 
   
   def user_params
-    params.permit(:username, :email, :token, :role, :spotify_id, :email_confirmed, :confirm_token)
+    params.permit(:username, :email, :token, :role, :spotify_id, :email_confirmed, :confirm_token, :password)
   end
 end
