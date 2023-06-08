@@ -64,7 +64,7 @@ class GenieService
     end
   end
 
-  def create_suggestion(params)
+  def create_suggestions(params)
     response = conn.post do |req|
       req.url '/api/v1/suggestions'
       req.headers['Content-Type'] = 'application/json'

@@ -26,13 +26,14 @@ class PlaylistsController < ApplicationController
       response = service.create_playlist(params)
       formatted_response = JSON.parse(response.body, symbolize_names: true)
       playlist_id = formatted_response[:data][:id]
-      redirect_to dashboard_playlist_path(playlist_id)
+      redirect_to dashboard_playlist_suggestions_path(playlist_id)  
     else
       response = service.create_user_playlist(params)
       playlist_id = response[:data][:id]
-      redirect_to dashboard_playlist_path(playlist_id)
+      redirect_to dashboard_playlist_suggestions_path(playlist_id)  
     end
   end
+  
   
   def show
     @user = User.find_by(spotify_id: session[:user_id])
@@ -41,13 +42,19 @@ class PlaylistsController < ApplicationController
     @playlist = formatted_response[:data]
   end
 
-
   def populate
     service = GenieService.new(suggestions_params[:playlist_id])
-
-    artists = [suggestions_params[:artist1], suggestions_params[:artist2], suggestions_params[:artist3]]
-    songs = [suggestions_params[:song1], suggestions_params[:song2], suggestions_params[:song3]]
-    genres = [suggestions_params[:genre1], suggestions_params[:genre2], suggestions_params[:genre3]]
+    
+    if !(suggestions_params[:artist] || suggestions_params[:genre] || suggestions_params[:song])
+      artists = [suggestions_params[:artist1], suggestions_params[:artist2], suggestions_params[:artist3]]
+      songs = [suggestions_params[:song1], suggestions_params[:song2], suggestions_params[:song3]]
+      genres = [suggestions_params[:genre1], suggestions_params[:genre2], suggestions_params[:genre3]]
+    else
+      artists = [params[:artist]]
+      songs = [params[:song]]
+      genres = [params[:genres]]
+    end
+    # require 'pry'; binding.pry
 
     [artists, songs, genres].each_with_index do |seed_array, enum|
       seed_type = case enum
@@ -60,7 +67,7 @@ class PlaylistsController < ApplicationController
       end
 
       seed_array.each do |seed|
-        next if seed.empty?
+        next if !seed.present?
         suggestion_params = {
           user_id: suggestions_params[:user_id],
           playlist_id: suggestions_params[:playlist_id],
@@ -68,7 +75,7 @@ class PlaylistsController < ApplicationController
           request: seed
         }.to_json
 
-        result = service.create_suggestion(suggestion_params)
+        result = service.create_suggestions(suggestion_params)
       end
     end
     
