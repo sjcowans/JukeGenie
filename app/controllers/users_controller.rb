@@ -1,6 +1,11 @@
 class UsersController < ApplicationController
   def show
     @user = User.find_by_spotify_id(session[:user_id])
+    service = GenieService.new(@user.id)
+    response = service.hosted_playlists
+    formatted_response = JSON.parse(response.body, symbolize_names: true)
+    @hosted_playlists = formatted_response[:hosted_playlists]
+    @joined_playlists = formatted_response[:joined_playlists]
     if @user.nil?
       redirect_to '/'
       flash[:alert] = "You need to sign in, yo!"
