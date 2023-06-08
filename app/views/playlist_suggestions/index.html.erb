@@ -1,18 +1,20 @@
 <center>
-  <div class="flex flex-col mt-10 relative left-0 top-24 px-4 p-3 bg-emerald-600">
+  <div class="flex flex-col mt-0 relative left-0 top-24 px-4 p-3 bg-emerald-600">
     <div class="relative text-1xl font-bold rounded r-lg text-black bg-emerald-600 focus:bg-emerald-700">
-      <%= form_with url: "/requests", method: :post, local: true do |f| %>
+      <%= form_with url: "/suggestions", method: :post, local: true do |f| %>
+        <%= hidden_field_tag(:user_id, @user.id) %>
+        <%= hidden_field_tag(:playlist_id, @playlist[:id]) %>
         <div class="text-white">
           <h1>Genres:</h1><br>
         </div>
         <div class="scroll">
           <% @genres.each do |genre| %>
             <%= f.label genre %>
-            <%= f.check_box genre %> <br>
+            <%= f.check_box "genre:#{genre}" %> <br>
           <% end %>
         </div>
         <div class="text-white">
-          <br><%= f.label :artists %> (seperate artists using commans!)
+          <br><%= f.label :artists %> (seperate artists using commas!)
         </div>
           <%= f.text_field :artists %>
         <div class="text-white">

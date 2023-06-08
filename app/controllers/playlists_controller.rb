@@ -29,13 +29,9 @@ class PlaylistsController < ApplicationController
   end
   
   def show
-    @user = User.find(params[:user_id])
-    @playlist = Playlist.find(params[:id])
-  end
-
-  private 
-
-  def playlist_params
-    params.require(:playlist).permit(:name, :host_id, :range, :input_address)
+    @user = User.find_by(spotify_id: session[:user_id])
+    response =  GenieService.new(params[:id]).find_playlist
+    formatted_response = JSON.parse(response.body, symbolize_names: true)
+    @playlist = formatted_response[:data]
   end
 end

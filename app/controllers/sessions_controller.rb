@@ -9,21 +9,27 @@ class SessionsController < ApplicationController
     user.spotify_id = user_data.uid
     user.save
     if user.confirmed?
-      # if user.two_factor == 1
-      #   user.send_two_factor_email
-      #   redirect_to '/'
-      #   flash[:alert] = 'Please click the link in your email to finish signing in'
-      # else
+      if user.true?
+        user.send_confirmation_email
+        redirect_to "/confirmations/#{user.id}"
+        flash[:alert] = 'Please click the link in your email to finish signing in or enter the code here'
+      else
         service = GenieService.new(user)
         service.create_user
         session[:user_id] = user.spotify_id
         redirect_to '/dashboard'
-      # end
+      end
     else
       user.send_confirmation_email
       redirect_to '/'
       flash[:alert] = 'Please activate your account by following the
       instructions in the account confirmation email you received to proceed'
     end
+  end
+
+  def update
+    user = User.find(params[:id])
+    session = session[:user_id] = nil
+    redirect_to '/'
   end
 end
