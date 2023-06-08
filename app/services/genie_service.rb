@@ -41,6 +41,6 @@ class GenieService
   end
 
   def find_playlist
-    conn.get("api/v1/playlists/#{@data}")
+    conn.get("/api/v1/playlists/#{@data}")
   end
 end

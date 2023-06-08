@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 
   scope '/dashboard', as: 'dashboard' do
     resources :playlists, only: [:index, :new, :create, :show] do
-      resources :suggestions, only: [:index], controller: 'playlist_suggestions'
+      resources :suggestions, only: [:index, :create], controller: 'playlist_suggestions'
     end
   end
 
