@@ -1,7 +1,7 @@
 <center>
   <div class="flex flex-col mt-0 relative left-0 top-24 px-4 p-3 bg-emerald-600">
     <div class="relative text-1xl font-bold rounded r-lg text-black bg-emerald-600 focus:bg-emerald-700">
-      <%= form_with url: dashboard_playlists_suggestions_path, method: :post, local: true do |f| %>
+      <%= form_with url: dashboard_playlist_suggestions_path, method: :post, local: true do |f| %>
         <%= hidden_field_tag(:user_id, @user.id) %>
         <%= hidden_field_tag(:playlist_id, @playlist[:id]) %>
         <div class="text-white">

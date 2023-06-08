@@ -7,11 +7,14 @@ Rails.application.routes.draw do
   patch '/dashboard', to: 'users#update'
   post '/dashboard', to: 'users#create'
   get '/dashboard/requests', to: 'requests#show'
+  get '/dashboard/explorejukes', to: 'explorejukes#show'
   resources :users, only: %i[new create]
 
   scope '/dashboard', as: 'dashboard' do
     resources :playlists, only: [:index, :new, :create, :show] do
       resources :suggestions, only: [:index, :show, :create], controller: 'playlist_suggestions'
+      get '/suggestion', to: 'playlist_suggestions#suggestion_form'
+      post "/suggestion", to: "playlist_suggestions#create_suggestion"
     end
   end
 
