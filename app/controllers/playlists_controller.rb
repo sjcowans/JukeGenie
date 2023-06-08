@@ -32,7 +32,6 @@ class PlaylistsController < ApplicationController
     response =  GenieService.new(params[:id]).find_playlist
     formatted_response = JSON.parse(response.body, symbolize_names: true)
     @playlist = formatted_response[:data]
-    # require 'pry'; binding.pry
   end
 
   private
