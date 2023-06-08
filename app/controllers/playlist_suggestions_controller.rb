@@ -49,7 +49,7 @@ class PlaylistSuggestionsController < ApplicationController
     service = GenieService.new(@data)
     response = service.create_suggestion
     formatted_response = JSON.parse(response.body, symbolize_names: true)
-    playlist_id = formatted_response[:data][:id]
+    playlist_id = formatted_response[:data][:attributes][:playlist_id]
     redirect_to dashboard_playlist_path(playlist_id)
   end
 end
