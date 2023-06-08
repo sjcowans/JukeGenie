@@ -4,7 +4,7 @@ class SessionsController < ApplicationController
     session[:user_id] = user_data.uid
     user = User.find_or_create_by(spotify_id: user_data.uid)
     user.username = user_data.info[:display_name]
-    user.token = user_data.credentials[:token]
+    user.token = user_data.credentials[:refresh_token]
     user.email = user_data.info[:email]
     user.spotify_id = user_data.uid
     user.save
