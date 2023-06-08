@@ -12,7 +12,7 @@ class UsersController < ApplicationController
     if @user.save
       @user.send_confirmation_email
       flash[:success] = "Please confirm your email address to continue"
-      redirect_to '/dahsboard'
+      redirect_to '/dashboard'
     else
       flash[:error] = "Ooooppss, something went wrong!"
       render 'new'
