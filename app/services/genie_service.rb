@@ -23,6 +23,15 @@ class GenieService
       req.body = params.to_json
     end
   end
+
+  def create_user_playlist(params)
+    response = conn.post do |req|
+      req.url "/api/v1/users/#{params[:user_id]}/playlists"
+      req.headers['Content-Type'] = 'application/json'
+      req.body = params.to_json
+    end
+    JSON.parse(response.body, symbolize_names: true)
+  end
   
   def create_suggestion
     response = conn.post do |req|
@@ -42,6 +51,10 @@ class GenieService
       req.headers = {"CONTENT_TYPE" => "application/json"}
       req.params = {user: JSON.parse(@data.to_json)}
     end
+  end
+
+  def hosted_playlists
+    conn.get("/api/v1/users/#{@data}/playlists")
   end
 
   def playlists

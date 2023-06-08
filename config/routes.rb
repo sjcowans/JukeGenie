@@ -23,5 +23,6 @@ Rails.application.routes.draw do
   get "/users/:id/playlists/:id/suggestions", to: 'playlist_suggestions#index'
   get '/confirmations/:id', to: 'confirmations#show'
   patch '/users/confirm', to: 'users#confirm_email'
+  get '/users/:id/search', to: 'playlists#search'
   resources :confirmations, only: %i[create edit], param: :confirmation_token
 end
