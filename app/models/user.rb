@@ -4,7 +4,9 @@ class User < ApplicationRecord
   enum email_confirmed: { uncomfirmed: 0, confirmed: 1 }
   enum two_factor: { false: 0, true: 1 }
   MAILER_FROM_EMAIL = 'no-reply@example.com'
-
+  
+  validates :username, presence: true
+  validates :email, presence: true
 
   def email_activate
     self.email_confirmed = 1
@@ -31,6 +33,10 @@ class User < ApplicationRecord
     save
   end
 
+  def sign_out(session)
+    session[:user_id] = nil
+    save
+  end
 
   def remove_two_factor
     self.two_factor = 0
