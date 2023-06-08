@@ -33,6 +33,10 @@ class GenieService
     end
   end
 
+  def hosted_playlists
+    conn.get("/api/v1/users/#{@data}/playlists")
+  end
+
   def playlists
     conn.get('api/v1/playlists') do |req|
       req.headers = {"CONTENT_TYPE" => "application/json"}
