@@ -29,12 +29,14 @@ RSpec.describe 'User show Page', type: :feature do
         expect(page).to have_content("Joined:")
       end
     end
-
   end
+    
   describe 'sad path' do
     it 'user cannot go to the dashboard without being logged in' do
       visit '/dashboard'
-      expect(page).to have_content("You need to sign in, yo!")
+      
+      expect(current_path).to eq('/')
+      expect(page).to have_content("Woah There! You need to sign in, yo!")
     end
   end
 end

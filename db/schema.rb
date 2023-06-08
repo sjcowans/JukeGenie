@@ -18,6 +18,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_06_171039) do
     t.string "spotify_id"
     t.integer "email_confirmed", default: 0
     t.string "confirm_token"
+    t.string "password"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "two_factor", default: 0

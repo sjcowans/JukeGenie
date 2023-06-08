@@ -15,7 +15,7 @@
 <div class="absolute right-10 top-0 px-5 p-8 bg-emerald-600">
   <div class="relative text-2xl font-bold rounded r-lg text-white bg-emerald-600 focus:bg-emerald-700">
    <%=@user.username %>'s Juke Page<div>
-    <center><div class="relative text-1xl font-bold rounded r-lg text-white bg-emerald-600 hover:bg-emerald-500 focus:bg-emerald-700"><%= button_to 'Logout', '/sessions', method: :patch, params: { logout: true} %></div></center>   
+    <center><%= button_to 'Logout', '/sessions', method: :patch, params: { logout: true, id: @user.id}, class: "relative text-1xl font-bold rounded r-lg text-white bg-emerald-600 hover:bg-emerald-500 focus:bg-emerald-700" %></center>   
 </div>
 
 
