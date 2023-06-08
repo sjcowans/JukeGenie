@@ -22,9 +22,15 @@ class PlaylistsController < ApplicationController
   
   def create
     service = GenieService.new
-    response = service.create_playlist(params)
-    playlist_id = response[:data][:id]
-    redirect_to dashboard_playlist_path(playlist_id)
+    if params[:join_code] == nil
+      response = service.create_playlist(params)
+      playlist_id = response[:data][:id]
+      redirect_to dashboard_playlist_path(playlist_id)
+    else
+      response = service.create_user_playlist(params)
+      playlist_id = response[:data][:id]
+      redirect_to dashboard_playlist_path(playlist_id)
+    end
   end
   
   def show
@@ -32,6 +38,10 @@ class PlaylistsController < ApplicationController
     response =  GenieService.new(params[:id]).find_playlist
     formatted_response = JSON.parse(response.body, symbolize_names: true)
     @playlist = formatted_response[:data]
+  end
+
+  def search
+    @user = User.find(params[:id])
   end
 
   private
