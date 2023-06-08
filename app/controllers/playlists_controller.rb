@@ -23,7 +23,7 @@ class PlaylistsController < ApplicationController
   def create
     service = GenieService.new
     response = service.create_playlist(params)
-    playlist_id = response[:id]
+    playlist_id = response[:data][:id]
     redirect_to dashboard_playlist_path(playlist_id)
   end
   
@@ -32,6 +32,7 @@ class PlaylistsController < ApplicationController
     response =  GenieService.new(params[:id]).find_playlist
     formatted_response = JSON.parse(response.body, symbolize_names: true)
     @playlist = formatted_response[:data]
+    # require 'pry'; binding.pry
   end
 
   private
