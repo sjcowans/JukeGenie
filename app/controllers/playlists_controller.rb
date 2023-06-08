@@ -4,13 +4,13 @@ class PlaylistsController < ApplicationController
     if params.has_key?("address")
       results = Geocoder.search(params["address"])
       current_location = results.first.data["geometry"]["location"]
-      response = @service.playlists
+      response = GenieService.new(current_location).playlists
       playlists_response = JSON.parse(response.body, symbolize_names: true)
       @playlists = playlists_response[:data]
     else
       results = request.location
       current_location = results.first.data["geometry"]["location"]
-      response = @service.playlists
+      response = GenieService.new(current_location).playlists
       playlists_response = JSON.parse(response.body, symbolize_names: true)
       @playlists = playlists_response[:data]
     end
@@ -23,7 +23,8 @@ class PlaylistsController < ApplicationController
   def create
     service = GenieService.new
     response = service.create_playlist(params)
-    playlist_id = response[:data][:id]
+    formatted_response = JSON.parse(response.body, symbolize_names: true)
+    playlist_id = formatted_response[:data][:id]
     redirect_to dashboard_playlist_path(playlist_id)
   end
   
