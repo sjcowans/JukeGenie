@@ -25,7 +25,7 @@ class PlaylistsController < ApplicationController
     service = GenieService.new
     response = service.create_playlist(playlist_params)
     playlist_id = response[:id]
-    redirect_to user_playlist_path(user, playlist_id)
+    redirect_to dashboard_path(user, playlist_id)
   end
   
   def show
