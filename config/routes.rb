@@ -1,3 +1,4 @@
+Rails.application.routes.default_url_options[:host] = "https://juke-genie.herokuapp.com/"
 Rails.application.routes.draw do
   get '/', to: 'welcome#index'
 
@@ -21,7 +22,6 @@ Rails.application.routes.draw do
 
   get '/sessions', to: 'sessions#create'
   patch '/sessions', to: 'sessions#update'
-  get "/users/:id/playlists/:id/suggestions", to: 'playlist_suggestions#index'
   get '/confirmations/:id', to: 'confirmations#show'
   patch '/users/confirm', to: 'users#confirm_email'
   get '/users/:id/search', to: 'playlists#search'
