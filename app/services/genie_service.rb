@@ -9,7 +9,7 @@ class GenieService
   end
 
   def conn
-    Faraday.new(url: 'http://https://juke-genie-api.herokuapp.com')
+    Faraday.new(url: 'https://juke-genie-api.herokuapp.com')
   end
 
   def user
