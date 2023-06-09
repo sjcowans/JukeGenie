@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   get '/', to: 'welcome#index'
 
-  post '/auth/spotify/callback', to: 'sessions#create'
+  get '/auth/spotify/callback', to: 'sessions#create'
   get '/login', to: 'sessions#new'
   
   get '/dashboard', to: 'users#show', as: :dashboard
