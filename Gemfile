@@ -57,6 +57,7 @@ gem "figaro"
 
 gem 'rspotify'
 gem 'omniauth'
+gem "omniauth-rails_csrf_protection"
 
 gem 'faraday'
 
