@@ -1,7 +1,7 @@
 # JukeGenie README
 <hr>
 
-<img src="playlists/welcome_page.png" alt="Welcome Page">
+<img src="/playlists/welcome_page.png" alt="Welcome Page">
 
 ## About the project:
 
@@ -34,7 +34,7 @@ When creating a JukeJam, that user will be set as the host. The user will create
 
 <hr>
 
-<img src="playlists/playlist_show.png" alt="Playlist Show Page">
+<img src="/playlists/playlist_show.png" alt="Playlist Show Page">
 
 ## Tech Stack
 
