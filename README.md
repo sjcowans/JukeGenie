@@ -36,7 +36,8 @@ When creating a JukeJam, that user will be set as the host. The user will have t
 
 * Ruby on Rails
 
-* 
+* Tailwind 
+
 
 <hr>
 
@@ -50,10 +51,14 @@ When creating a JukeJam, that user will be set as the host. The user will have t
 
 ## This project was created by:
 
-* <a href="https://www.linkedin.com/in/sean-cowans-985554267/">Sean Cowans</a>
+* <a href="https://www.linkedin.com/in/sean-cowans-985554267/">Sean Cowans</a> <br>
+<small><a href="https://github.com/sjcowans">Github</a></small>
 
-* <a href="https://www.linkedin.com/in/alejandrolopez1992/">Alejandro Lopez</a>
+* <a href="https://www.linkedin.com/in/alejandrolopez1992/">Alejandro Lopez</a><br>
+<small><a href="https://github.com/AlejandroLopez1992">Github</a></small>
 
-* <a href="https://www.linkedin.com/in/andrew-b0wman/">Andrew Bowman</a>
+* <a href="https://www.linkedin.com/in/andrew-b0wman/">Andrew Bowman</a><br>
+<small><a href="https://github.com/abwmn">Github</a></small>
 
-* <a href="https://www.linkedin.com/in/boston-lowrey/"> Boston Lowrey</a>
+* <a href="https://www.linkedin.com/in/boston-lowrey/"> Boston Lowrey</a><br>
+<small><a href="https://github.com/BLowrey24">Github</a></small>
