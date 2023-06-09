@@ -285,6 +285,7 @@ GEM
       activesupport (>= 5.2)
       sprockets (>= 3.0.0)
     sqlite3 (1.6.3-x86_64-darwin)
+    sqlite3 (1.6.3-x86_64-linux)
     stimulus-rails (1.2.1)
       railties (>= 6.0.0)
     tailwindcss-rails (2.0.29-x86_64-darwin)
