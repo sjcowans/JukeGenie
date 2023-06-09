@@ -1,12 +1,23 @@
 # JukeGenie README
 <hr>
 
-<img src="/playlists/welcome_page.png" alt="Welcome Page">
-
+![alt text](https://github.com/sjcowans/JukeGenie/blob/populate/app/assets/images/playlists/welcome_page.png?raw=true)
 ## About the project:
 
 
 JukeGenie sprang from the desire to make party playlists more inclusive and collaborative. Most playlists are controlled by a single host or DJ with no regard for potentially valuable input from the partygoers the playlist is supposed to entertain. JukeGenie empowers the partygoers to control their musical destiny in a collaborative process.
+
+<hr>
+
+### <b>Oauth Integration:</b> 
+Omniauth gem is used to integrate with Spotify Oauth API 2.0. Authorization Flow from Spotify is used. Rspotify Gem is used for automatic 
+refreshing of the user token. Refresh token is passed to the backend JukeGenie-Api where a created method is used to refresh the users token via a Facade initialization.
+
+
+<hr>
+
+### <b>SOA Functionality:</b> 
+JukeGenie (FrontEnd) provides the view functionality of the app and creates requests to the JukeGenie-API for database requests on saved playlists, suggestions, aritists, tracks. This relies on calls to backend triggering calls to other outside API's (Spotify API and Google Geolocation API). JukeGenie is also responsible for User Oauth verification, email verification upon registration and two factor authentication. 
 
 <hr>
 
@@ -27,14 +38,13 @@ On their user dashboard page, users will see any JukeJams that they are hosting 
 ### <b>As a JukeJam Host:</b>
 When creating a JukeJam, that user will be set as the host. The user will create their Jukejam with a name, full address and range. Then they will be taken to an initial suggestions page where they can send initial suggestions to populate a spotify playlist. The playlis will be created and they will see the embedded spotify playlist on the created playlist's show page. 
 <ol>
-  <li></li>
   <li>The JukeJam host will get a JukeJam code that they can share with other users so that they can join the JukeJam.</li>
   <li>Any user within the set range by the host will be able to find that JukeJam with the Explore Nearby Jukes button and send in recommendations.</li>
 </ol>
 
 <hr>
 
-<img src="/playlists/playlist_show.png" alt="Playlist Show Page">
+![alt text](https://github.com/sjcowans/JukeGenie/blob/populate/app/assets/images/playlists/playlist_show.png?raw=true)
 
 ## Tech Stack
 
@@ -45,8 +55,6 @@ When creating a JukeJam, that user will be set as the host. The user will create
 * Postgresql
 
 * Sqlite3
-
-* 
 
 
 <hr>
