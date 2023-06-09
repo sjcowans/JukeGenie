@@ -39,6 +39,10 @@ class SessionsController < ApplicationController
     end
   end
 
+  def new
+    render :new
+  end
+
   def update
     if params[:logout] == "true"
       @user = User.find(params[:id])

@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   get '/', to: 'welcome#index'
 
   get 'auth/spotify/callback', to: 'sessions#create'
+  get '/login', to: 'sessions#new'
   
   get '/dashboard', to: 'users#show', as: :dashboard
   patch '/dashboard', to: 'users#update'
